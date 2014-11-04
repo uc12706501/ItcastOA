@@ -1,2 +1,9 @@
+<%--<% response.sendRedirect("index.action"); %>--%>
+<html>
+<head>
 
-<% response.sendRedirect("index.action"); %>
+</head>
+<body>
+<h1>Hello World</h1>
+</body>
+</html>

@@ -4,22 +4,9 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-
-    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
-
-    <package name="myPackage" extends="struts-default">
-
-        <default-action-ref name="index" />
-
-        <action name="index" class="cn.itcast.IndexAction">
-            <result>/jsp/index.jsp</result>
+    <package name="default" namespace="/" extends="struts-default">
+        <action name="index" class="testAction">
+            <result>/index.jsp</result>
         </action>
-
-        <action name="helloWorld" class="helloWorldAction">
-            <result name="input">/jsp/index.jsp</result>
-            <result>/jsp/helloWorld.jsp</result>
-        </action>
-
     </package>
-
 </struts>
