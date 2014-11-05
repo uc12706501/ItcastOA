@@ -12,7 +12,7 @@
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.1" />
           <element id="library" level="project" name="Maven: ognl:ognl:3.0.6" />
           <element id="library" level="project" name="Maven: javassist:javassist:3.11.0.GA" />
-          <element id="library" level="project" name="Maven: asm:asm:3.3" />
+          <element id="library" level="project" name="Maven: asm:asm:1.5.3" />
           <element id="library" level="project" name="Maven: asm:asm-commons:3.3" />
           <element id="library" level="project" name="Maven: asm:asm-tree:3.3" />
           <element id="library" level="project" name="Maven: org.freemarker:freemarker:2.3.19" />
@@ -33,6 +33,35 @@
           <element id="library" level="project" name="Maven: org.apache.struts:struts2-config-browser-plugin:2.3.16.3" />
           <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
           <element id="library" level="project" name="Maven: uk.ltd.getahead:dwr:1.1-beta-3" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate:3.2.1.ga" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:1.2.3" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:2.1.1" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.0.1B" />
+          <element id="library" level="project" name="Maven: asm:asm-attrs:1.5.3" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.6" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.1_3" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-annotations:3.2.1.ga" />
+          <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-entitymanager:3.2.1.ga" />
+          <element id="library" level="project" name="Maven: jboss:javassist:3.3.ga" />
+          <element id="library" level="project" name="Maven: jboss:jboss-archive-browsing:5.0.0alpha-200607201-119" />
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:3.1.14" />
+          <element id="library" level="project" name="Maven: c3p0:c3p0:0.9.1.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-orm:3.0.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:1.2.2" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-tx:3.0.0.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework:spring-dao:1.2.2" />
+          <element id="library" level="project" name="Maven: jotm:jotm:2.0.10" />
+          <element id="library" level="project" name="Maven: jotm:jotm_jrmp_stubs:2.0.10" />
+          <element id="library" level="project" name="Maven: javax.resource:connector:1.0" />
+          <element id="library" level="project" name="Maven: org.objectweb.carol:carol:2.0.5" />
+          <element id="library" level="project" name="Maven: howl:howl-logger:0.1.11" />
+          <element id="library" level="project" name="Maven: commons-dbcp:commons-dbcp:1.2.1" />
+          <element id="library" level="project" name="Maven: commons-pool:commons-pool:1.2" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: xerces:xercesImpl:2.0.2" />
+          <element id="library" level="project" name="Maven: com.experlog:xapool:1.5.0" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="ItcastOA/web/Web" />
