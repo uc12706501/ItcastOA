@@ -23,6 +23,7 @@ public class Role {
         this.id = id;
     }
 
+    @Column
     public String getName() {
 
         return name;
@@ -32,20 +33,15 @@ public class Role {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Role)) return false;
-
-        Role role = (Role) o;
-
-        if (!name.equals(role.name)) return false;
-
-        return true;
+    @Column
+    public String getDescription() {
+        return description;
     }
 
-    @Override
-    public int hashCode() {
-        return name.hashCode();
+    public void setDescription(String description) {
+        this.description = description;
     }
+
+    String description;
+
 }
