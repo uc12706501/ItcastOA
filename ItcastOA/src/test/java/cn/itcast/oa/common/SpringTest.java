@@ -1,7 +1,6 @@
 package cn.itcast.oa.common;
 
 import cn.itcast.oa.service.TestService;
-import cn.itcast.oa.view.action.TestAction;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,21 +20,10 @@ import static org.junit.Assert.*;
 public class SpringTest extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Resource
-    TestAction testAction;
-    @Resource
     SessionFactory sessionFactory;
     @Resource
     TestService service;
 
-    @Test
-    public void testBean(){
-        assertNotNull(testAction);
-    }
-
-    @Test
-    public void testSessionFactory(){
-        assertNotNull(sessionFactory);
-    }
 
     @Test
     public void testTransaction(){

@@ -53,7 +53,7 @@ public class DaoBaseImpl<T> implements cn.itcast.oa.base.DaoBase<T> {
 
     @Transactional
     public List<T> getByIds(Long[] ids) {
-        return getSession().createQuery("from " + clazz.getSimpleName() + " where id in (?:ids)")
+        return getSession().createQuery("from " + clazz.getSimpleName() + " where id in (:ids)")
                 .setParameterList("ids",ids)
                 .list();
     }
