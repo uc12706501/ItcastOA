@@ -2,33 +2,52 @@ package cn.itcast.oa.dao.impl;
 
 import cn.itcast.oa.dao.UserDao;
 import cn.itcast.oa.domain.User;
-import junit.framework.TestCase;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-public class UserDaoImplTest extends TestCase {
+import javax.annotation.Resource;
 
-    ApplicationContext applicationContext;
-    UserDao userDao;
-    public UserDaoImplTest(){
-        applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
-        userDao= (UserDao) applicationContext.getBean("userDao");
-    }
+import static org.junit.Assert.*;
 
-    public void testSaveAndDelete() throws Exception {
-        User user=new User();
-        user.setName("Bob");
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+public class UserDaoImplTest extends AbstractTransactionalJUnit4SpringContextTests {
+
+    @Resource
+    private UserDao userDao;
+
+    @Test
+    public void testCUDR() throws Exception {
+        User user1=new User();
+        User user2=new User();
+        User user3=new User();
+        user1.setName("Bob");
+        user2.setName("Jone");
+        user3.setName("Lv");
 
         //测试保存
-        Long id= (Long) userDao.save(user);
-        assertNotNull(id);
-        User fetchedUser=userDao.getById(id);
-        assertEquals(user,fetchedUser);
+        Long id1= (Long) userDao.save(user1);
+        assertNotNull(id1);
+        User fetchedUser1=userDao.getById(id1);
+        assertEquals(user1,fetchedUser1);
+
+        Long id2= (Long) userDao.save(user1);
+        assertNotNull(id2);
+        User fetchedUser2=userDao.getById(id2);
+        assertEquals(user1,fetchedUser2);
+
+        Long id3= (Long) userDao.save(user1);
+        assertNotNull(id3);
+        User fetchedUser3=userDao.getById(id3);
+        assertEquals(user1,fetchedUser3);
 
         //测试删除
-        userDao.delete(id);
-        User deletedUser=userDao.getById(id);
-        assertNull(deletedUser);
+//        userDao.delete(id);
+//        User deletedUser=userDao.getById(id);
+//        assertNull(deletedUser);
     }
 
     public void testUpdate() throws Exception {

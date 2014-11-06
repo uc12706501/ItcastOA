@@ -20,7 +20,7 @@
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.1</version>
+            <version>4.5</version>
             <scope>test</scope>
         </dependency>
 
@@ -122,14 +122,15 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>3.0.0.RELEASE</version>
+            <version>3.0.5.RELEASE</version>
+        </dependency>
+        <!--Spring test-->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>3.0.5.RELEASE</version>
         </dependency>
         <!-- Spring JDBC -->
-        <dependency>
-            <groupId>springframework</groupId>
-            <artifactId>spring-jdbc</artifactId>
-            <version>1.2.2</version>
-        </dependency>
         <!-- JPA -->
         <dependency>
             <groupId>javax.persistence</groupId>

@@ -18,21 +18,12 @@ public class TestService {
     public SessionFactory sessionFactory;
 
     @Transactional
-    public void AddTwoUserSuccess(){
-        Session session=sessionFactory.getCurrentSession();
-        User user1=new User();
-        User user2=new User();
-        session.save(user1);
-        session.save(user2);
-    }
-
-    @Transactional
-    public void AddTwoUserFail(){
-        Session session=sessionFactory.getCurrentSession();
+    public void AddUser(boolean success){
         User user=new User();
-        session.save(user);
-        int i=1/0;
-        session.save(user);
+        user.setName("Bob");
+        if(!success)
+            throw new IllegalArgumentException("Insert fail");
+        sessionFactory.getCurrentSession().save(user);
     }
 
     @Transactional

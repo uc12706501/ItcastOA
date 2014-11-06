@@ -4,44 +4,53 @@ import cn.itcast.oa.service.TestService;
 import cn.itcast.oa.view.action.TestAction;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.annotation.Resource;
 
 import static org.junit.Assert.*;
 
 /**
  * Created by lkk on 2014/11/4.
  */
-public class SpringTest {
-    private ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+public class SpringTest extends AbstractTransactionalJUnit4SpringContextTests {
+
+    @Resource
+    TestAction testAction;
+    @Resource
+    SessionFactory sessionFactory;
+    @Resource
+    TestService service;
 
     @Test
     public void testBean(){
-        TestAction ta= (TestAction) applicationContext.getBean("testAction");
-        assertNotNull(ta);
+        assertNotNull(testAction);
     }
 
     @Test
     public void testSessionFactory(){
-        SessionFactory sessionFactory= (SessionFactory) applicationContext.getBean("sessionFactory");
         assertNotNull(sessionFactory);
     }
 
     @Test
     public void testTransaction(){
-        TestService service= (TestService) applicationContext.getBean("testService");
         assertNotNull(service);
 
-        service.AddTwoUserSuccess();
-        assertEquals(new Long(2),service.SumUser());
+        service.AddUser(true);
+        assertEquals(new Long(1),service.SumUser());
 
         try {
-            service.AddTwoUserFail();
+            service.AddUser(false);
         }
-        catch (ArithmeticException e){
-            assertEquals(new Long(2),service.SumUser());
+        catch (IllegalArgumentException e){
+            assertEquals(new Long(1),service.SumUser());
             return;
         }
-        fail("fail to catch arithmeticException");
+        fail("fail to catch Exception");
     }
 }
