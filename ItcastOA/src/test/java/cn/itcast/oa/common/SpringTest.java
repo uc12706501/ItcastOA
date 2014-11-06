@@ -2,29 +2,32 @@ package cn.itcast.oa.common;
 
 import cn.itcast.oa.service.TestService;
 import cn.itcast.oa.view.action.TestAction;
-import junit.framework.TestCase;
 import org.hibernate.SessionFactory;
+import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by lkk on 2014/11/4.
  */
-public class SpringTest extends TestCase {
+public class SpringTest {
     private ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationContext.xml");
 
+    @Test
     public void testBean(){
         TestAction ta= (TestAction) applicationContext.getBean("testAction");
         assertNotNull(ta);
     }
 
+    @Test
     public void testSessionFactory(){
         SessionFactory sessionFactory= (SessionFactory) applicationContext.getBean("sessionFactory");
         assertNotNull(sessionFactory);
     }
 
-    @Transactional
+    @Test
     public void testTransaction(){
         TestService service= (TestService) applicationContext.getBean("testService");
         assertNotNull(service);

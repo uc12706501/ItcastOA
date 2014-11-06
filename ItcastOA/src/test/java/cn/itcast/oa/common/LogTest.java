@@ -1,12 +1,13 @@
 package cn.itcast.oa.common;
 
-import junit.framework.TestCase;
 import org.apache.log4j.Logger;
+import org.junit.Test;
 
 /**
  * 测试日志级别
  */
-public class LogTest extends TestCase {
+public class LogTest{
+    @Test
     public void testLog(){
         Logger log=Logger.getLogger(this.getClass());
         log.debug("log debug");

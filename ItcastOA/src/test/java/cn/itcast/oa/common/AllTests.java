@@ -1,16 +1,12 @@
 package cn.itcast.oa.common;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
  * Created by lkk on 2014/11/4.
  */
+@RunWith(Suite.class)
+@Suite.SuiteClasses({LogTest.class,SpringTest.class})
 public class AllTests{
-    public static Test suite(){
-        TestSuite suite=new TestSuite();
-        suite.addTestSuite(LogTest.class);
-        suite.addTestSuite(SpringTest.class);
-        return suite;
-    }
 }
