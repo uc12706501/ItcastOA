@@ -1,4 +1,4 @@
-package cn.itcast.oa.action;
+package cn.itcast.oa.common;
 
 import junit.framework.Test;
 import junit.framework.TestSuite;
@@ -9,6 +9,7 @@ import junit.framework.TestSuite;
 public class AllTests{
     public static Test suite(){
         TestSuite suite=new TestSuite();
+        suite.addTestSuite(LogTest.class);
         suite.addTestSuite(SpringTest.class);
         return suite;
     }

@@ -1,6 +1,7 @@
-package cn.itcast.oa.action;
+package cn.itcast.oa.common;
 
 import cn.itcast.oa.service.TestService;
+import cn.itcast.oa.view.action.TestAction;
 import junit.framework.TestCase;
 import org.hibernate.SessionFactory;
 import org.springframework.context.ApplicationContext;

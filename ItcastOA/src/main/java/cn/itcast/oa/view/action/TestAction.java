@@ -1,4 +1,4 @@
-package cn.itcast.oa.action;
+package cn.itcast.oa.view.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.springframework.context.annotation.Scope;

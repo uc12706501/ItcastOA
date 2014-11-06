@@ -2,16 +2,16 @@ package cn.itcast.oa.domain;
 
 import javax.persistence.*;
 
+
 /**
- * Created by lkk on 2014/11/5.
+ * Created by lkk on 2014/11/6.
  */
 @Entity
-@Table(name = "itcastoa_user")
-public class User {
-    private long id;
+@Table(name = "itcastoa_role")
+public class Role {
+    long id;
 
-    private String name;
-
+    String name;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,8 +23,8 @@ public class User {
         this.id = id;
     }
 
-    @Column
     public String getName() {
+
         return name;
     }
 
@@ -35,11 +35,11 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof User)) return false;
+        if (!(o instanceof Role)) return false;
 
-        User user = (User) o;
+        Role role = (Role) o;
 
-        if (!name.equals(user.name)) return false;
+        if (!name.equals(role.name)) return false;
 
         return true;
     }
