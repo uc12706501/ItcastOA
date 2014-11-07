@@ -4,6 +4,7 @@ import cn.itcast.oa.domain.Role;
 import cn.itcast.oa.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.ModelDriven;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -15,24 +16,12 @@ import java.util.List;
  */
 @Controller
 @Scope("prototype")
-public class RoleAction extends ActionSupport {
+public class RoleAction extends ActionSupport implements ModelDriven<Role> {
 
-    private Long id;
+    private Role role=new Role();
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    private String name;
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    private String description;
-
-    public void setId(Long id) {
-        this.id = id;
+    public Role getModel() {
+        return role;
     }
 
 
@@ -56,7 +45,7 @@ public class RoleAction extends ActionSupport {
      * @return
      */
     public String delete() {
-        roleService.delete(id);
+        roleService.delete(role.getId());
         return "toList";
     }
 
@@ -75,9 +64,6 @@ public class RoleAction extends ActionSupport {
      * @return
      */
     public String add() {
-        Role role=new Role();
-        role.setName(name);
-        role.setDescription(description);
         roleService.save(role);
         return "toList";
     }
@@ -88,7 +74,7 @@ public class RoleAction extends ActionSupport {
      * @return
      */
     public String editUI() {
-        Role role=roleService.getById(id);
+        role=roleService.getById(role.getId());
         ActionContext.getContext().getValueStack().push(role);
         return "editUI";
     }
@@ -99,10 +85,9 @@ public class RoleAction extends ActionSupport {
      * @return
      */
     public String edit() {
-        Role role=roleService.getById(id);
-        role.setName(name);
-        role.setDescription(description);
         roleService.update(role);
         return "toList";
     }
+
+
 }
