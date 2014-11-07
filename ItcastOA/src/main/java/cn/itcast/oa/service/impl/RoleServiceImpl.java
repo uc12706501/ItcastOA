@@ -4,6 +4,7 @@ import cn.itcast.oa.dao.RoleDao;
 import cn.itcast.oa.domain.Role;
 import cn.itcast.oa.service.RoleService;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by lkk on 2014/11/7.
  */
 @Repository("roleService")
+@Transactional
 public class RoleServiceImpl implements RoleService {
 
     @Resource
