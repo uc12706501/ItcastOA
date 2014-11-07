@@ -38,8 +38,8 @@
 
 <!--显示表单内容-->
 <div id="MainArea">
-    <s:form action="role_add">
-        <s:hidden value="id"></s:hidden>
+    <s:form action="role_%{id==null?save:edit}">
+        <s:hidden name="id"></s:hidden>
         <div class="ItemBlock_Title1"><!-- 信息说明<DIV CLASS="ItemBlock_Title1">
         	<IMG BORDER="0" WIDTH="4" HEIGHT="7" SRC="${pageContext.request.contextPath}/style/blue/images/item_point.gif" /> 岗位信息 </DIV>  -->
         </div>
