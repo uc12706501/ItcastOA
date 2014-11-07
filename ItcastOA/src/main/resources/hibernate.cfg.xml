@@ -11,7 +11,7 @@
         <!--<property name="hibernate.connection.password">320114</property>-->
         <!--<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/itcast0720</property>-->
         <!--2. 其他配置-->
-        <property name="hibernate.hbm2ddl.auto">create</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
         <!--<property name="current_session_context_class">thread</property>-->

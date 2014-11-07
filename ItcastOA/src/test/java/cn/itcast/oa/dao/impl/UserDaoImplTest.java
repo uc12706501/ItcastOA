@@ -21,6 +21,7 @@ public class UserDaoImplTest extends AbstractTransactionalJUnit4SpringContextTes
     @Resource
     private UserDao userDao;
 
+    //todo 重构，将各个功能的测试分开
     @Test
     public void testCUDR() throws Exception {
         User user1=new User();
