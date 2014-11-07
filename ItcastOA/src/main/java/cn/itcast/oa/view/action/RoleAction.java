@@ -35,7 +35,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
      */
     public String list() {
         List<Role> roles = roleService.getAll();
-        ActionContext.getContext().put("list", roles);
+        ActionContext.getContext().put("roleList", roles);
         return "list";
     }
 

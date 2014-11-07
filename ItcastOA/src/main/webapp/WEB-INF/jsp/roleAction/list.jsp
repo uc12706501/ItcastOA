@@ -12,7 +12,7 @@
     <title></title>
 </head>
 <body>
-<s:iterator value="#list">
+<s:iterator value="#roleList">
     <s:property value="name"></s:property>
     <s:property value="description"></s:property>
     <s:a action="role_delete?id=%{id}" onclick="return confirm('确定要删除吗？')">删除</s:a>
