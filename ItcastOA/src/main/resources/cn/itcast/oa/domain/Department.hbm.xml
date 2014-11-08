@@ -11,7 +11,20 @@
         </id>
         <property name="name"/>
         <property name="description"/>
+        <!--users属性，本类与User类的一对多关联-->
+        <set name="users">
+            <key column="departmentId"></key>
+            <one-to-many class="User"/>
+        </set>
 
+        <!--parent属性，本类与Department（上机）的多对一关联-->
+        <many-to-one name="parent" class="Department" column="parentId"></many-to-one>
+
+        <!--children属性，本类与Department（下级）的一对多关联-->
+        <set name="children">
+            <key column="parentId"></key>
+            <one-to-many class="Department"/>
+        </set>
     </class>
 
 </hibernate-mapping>

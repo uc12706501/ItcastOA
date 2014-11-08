@@ -1,6 +1,8 @@
 package cn.itcast.oa.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import java.util.Set;
 
 
 /**
@@ -9,23 +11,20 @@ import javax.persistence.*;
 @Entity
 @Table(name = "itcastoa_role")
 public class Role {
-    long id;
+    private Long id;
+    private String name;
+    private String description;
+    private Set<User> users;
 
-    String name;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    @Column
     public String getName() {
-
         return name;
     }
 
@@ -33,7 +32,6 @@ public class Role {
         this.name = name;
     }
 
-    @Column
     public String getDescription() {
         return description;
     }
@@ -42,6 +40,11 @@ public class Role {
         this.description = description;
     }
 
-    String description;
+    public Set<User> getUsers() {
+        return users;
+    }
 
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
 }
