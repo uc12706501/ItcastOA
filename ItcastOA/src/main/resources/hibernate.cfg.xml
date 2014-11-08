@@ -16,6 +16,8 @@
         <property name="hibernate.format_sql">true</property>
         <!--<property name="current_session_context_class">thread</property>-->
         <!--3. 导入映射文件-->
-
+        <mapping resource="cn/itcast/oa/domain/User.hbm.xml"/>
+        <mapping resource="cn/itcast/oa/domain/Role.hbm.xml"/>
+        <mapping resource="cn/itcast/oa/domain/Department.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
