@@ -37,8 +37,10 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
         List<Department> departmentList;
         if (parentId == null)
             departmentList = departmentService.findTopList();
-        else
+        else{
+            Department parent=departmentService.getById(parentId);
             departmentList = departmentService.getChildren(parentId);
+        }
 
         ActionContext.getContext().put("departmentList", departmentList);
         return "list";
