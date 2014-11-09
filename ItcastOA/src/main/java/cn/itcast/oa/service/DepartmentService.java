@@ -14,7 +14,11 @@ public interface DepartmentService {
 
     void save(Department department);
 
-    Object getById(Long id);
+    Department getById(Long id);
 
     void updata(Department department);
+
+    List<Department> findTopList();
+
+    List<Department> getChildren(Long parentId);
 }

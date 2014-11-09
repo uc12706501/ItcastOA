@@ -51,8 +51,8 @@
         <tbody id="TableData" class="dataContainer" datakey="departmentList">
         <s:iterator value="#departmentList">
             <tr class="TableDetail1 template">
-                <td><a href="_list_level2.html">${department.name}</a>&nbsp;</td>
-                <td>${name}&nbsp;</td>
+                <td><s:a action="department_list?parentId=%{id}">${name}</s:a>&nbsp;</td>
+                <td>${parent.name}&nbsp;</td>
                 <td>${description}&nbsp;</td>
                 <td><s:a onClick="return window.confirm('这将删除所有的下级部门，您确定要删除吗？')" action="department_delete?id=%{id}">删除</s:a>
                     <s:a action="department_editUI?id=%{id}">修改</s:a>
