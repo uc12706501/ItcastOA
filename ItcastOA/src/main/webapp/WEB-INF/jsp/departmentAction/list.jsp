@@ -1,25 +1,10 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lkk
-  Date: 2014/11/7
-  Time: 9:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="s" uri="/struts-tags" %>
-
 
 <html>
 <head>
     <title>部门列表</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/pageCommon.js"
-            charset="utf-8"></script>
-    <script language="javascript" src="${pageContext.request.contextPath}/script/PageUtils.js" charset="utf-8"></script>
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/pageCommon.css"/>
-    <script type="text/javascript">
-    </script>
+    <%@ include file="/WEB-INF/jsp/public/commons.jspf"%>
 </head>
 <body>
 
