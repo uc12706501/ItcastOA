@@ -1,6 +1,6 @@
 package cn.itcast.oa.dao.impl;
 
-import cn.itcast.oa.base.DaoBaseImpl;
+import cn.itcast.oa.base.DaoSupportImpl;
 import cn.itcast.oa.dao.UserDao;
 import cn.itcast.oa.domain.User;
 import org.springframework.stereotype.Component;
@@ -10,5 +10,6 @@ import org.springframework.stereotype.Component;
  */
 
 @Component("userDao")
-public class UserDaoImpl extends DaoBaseImpl<User> implements UserDao {
+@Deprecated
+public class UserDaoImpl extends DaoSupportImpl<User> implements UserDao {
 }

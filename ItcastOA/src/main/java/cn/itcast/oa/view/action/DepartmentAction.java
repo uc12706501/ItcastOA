@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Controller
 @Scope("prototype")
-public class DepartmentAction extends BaseAction<Department>{
+public class DepartmentAction extends BaseAction<Department> {
 
     private Long parentId;
 
@@ -27,8 +27,8 @@ public class DepartmentAction extends BaseAction<Department>{
         List<Department> departmentList;
         if (parentId == null)
             departmentList = departmentService.findTopList();
-        else{
-            Department parent=departmentService.getById(parentId);
+        else {
+            Department parent = departmentService.getById(parentId);
             departmentList = departmentService.getChildren(parentId);
         }
 
@@ -53,7 +53,7 @@ public class DepartmentAction extends BaseAction<Department>{
      */
     public String addUI() {
         List<Department> topList = departmentService.findTopList();
-        List<Department> departmentList= DepartmentUtil.getAllDepartments(topList);
+        List<Department> departmentList = DepartmentUtil.getAllDepartments(topList);
         ActionContext.getContext().put("departmentList", departmentList);
         return "saveUI";
     }
@@ -64,7 +64,8 @@ public class DepartmentAction extends BaseAction<Department>{
      * @return
      */
     public String add() {
-        model.setParent(departmentService.getById(parentId));
+        if (parentId != null)
+            model.setParent(departmentService.getById(parentId));
         departmentService.save(model);
         return "toList";
     }
@@ -91,8 +92,9 @@ public class DepartmentAction extends BaseAction<Department>{
      * @return
      */
     public String edit() {
-        model.setParent(departmentService.getById(parentId));
-        departmentService.updata(model);
+        if (parentId != null)
+            model.setParent(departmentService.getById(parentId));
+        departmentService.update(model);
         return "toList";
     }
 

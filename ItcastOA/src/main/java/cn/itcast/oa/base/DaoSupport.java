@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * Created by lkk on 2014/11/6.
  */
-public interface DaoBase<T> {
+public interface DaoSupport<T> {
     /**
      * 保存实体
      * @param entity
