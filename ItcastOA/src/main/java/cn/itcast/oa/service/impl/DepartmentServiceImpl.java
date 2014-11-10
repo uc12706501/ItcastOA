@@ -4,7 +4,6 @@ import cn.itcast.oa.base.DaoSupportImpl;
 import cn.itcast.oa.domain.Department;
 import cn.itcast.oa.service.DepartmentService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -12,8 +11,6 @@ import java.util.List;
  * Created by lkk on 2014/11/7.
  */
 @Service("departmentService")
-@Transactional
-@SuppressWarnings({"unchecked"})
 public class DepartmentServiceImpl extends DaoSupportImpl<Department> implements DepartmentService {
 
     public List<Department> findTopList() {

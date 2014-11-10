@@ -141,7 +141,6 @@
             <artifactId>spring-test</artifactId>
             <version>3.0.5.RELEASE</version>
         </dependency>
-        <!-- Spring JDBC -->
         <!-- JPA -->
         <dependency>
             <groupId>javax.persistence</groupId>
@@ -152,6 +151,12 @@
             <groupId>javax.transaction</groupId>
             <artifactId>jta</artifactId>
             <version>1.0.1B</version>
+        </dependency>
+        <!--哈希算法-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
         </dependency>
     </dependencies>
 
