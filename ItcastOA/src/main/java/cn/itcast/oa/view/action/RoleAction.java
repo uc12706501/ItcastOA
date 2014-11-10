@@ -1,14 +1,11 @@
 package cn.itcast.oa.view.action;
 
+import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Role;
-import cn.itcast.oa.service.RoleService;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,17 +13,7 @@ import java.util.List;
  */
 @Controller
 @Scope("prototype")
-public class RoleAction extends ActionSupport implements ModelDriven<Role> {
-
-    private Role role=new Role();
-
-    public Role getModel() {
-        return role;
-    }
-
-
-    @Resource
-    public RoleService roleService;
+public class RoleAction extends BaseAction<Role> {
 
     /**
      * 列表
@@ -45,7 +32,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
      * @return
      */
     public String delete() {
-        roleService.delete(role.getId());
+        roleService.delete(model.getId());
         return "toList";
     }
 
@@ -64,7 +51,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
      * @return
      */
     public String add() {
-        roleService.save(role);
+        roleService.save(model);
         return "toList";
     }
 
@@ -74,8 +61,8 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
      * @return
      */
     public String editUI() {
-        role=roleService.getById(role.getId());
-        ActionContext.getContext().getValueStack().push(role);
+        model = roleService.getById(model.getId());
+        ActionContext.getContext().getValueStack().push(model);
         return "saveUI";
     }
 
@@ -85,7 +72,7 @@ public class RoleAction extends ActionSupport implements ModelDriven<Role> {
      * @return
      */
     public String edit() {
-        roleService.update(role);
+        roleService.update(model);
         return "toList";
     }
 

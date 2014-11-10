@@ -1,15 +1,12 @@
 package cn.itcast.oa.view.action;
 
+import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Department;
-import cn.itcast.oa.service.DepartmentService;
 import cn.itcast.oa.util.DepartmentUtil;
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
-import com.opensymphony.xwork2.ModelDriven;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,17 +14,9 @@ import java.util.List;
  */
 @Controller
 @Scope("prototype")
-public class DepartmentAction extends ActionSupport implements ModelDriven<Department> {
+public class DepartmentAction extends BaseAction<Department>{
 
-    @Resource
-    private DepartmentService departmentService;
-    private Department department = new Department();
     private Long parentId;
-
-
-    public Department getModel() {
-        return department;
-    }
 
     /**
      * 列表
@@ -53,7 +42,7 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
      * @return
      */
     public String delete() {
-        departmentService.delete(department.getId());
+        departmentService.delete(model.getId());
         return "toList";
     }
 
@@ -75,8 +64,8 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
      * @return
      */
     public String add() {
-        department.setParent(departmentService.getById(parentId));
-        departmentService.save(department);
+        model.setParent(departmentService.getById(parentId));
+        departmentService.save(model);
         return "toList";
     }
 
@@ -86,12 +75,12 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
      * @return
      */
     public String editUI() {
-        ActionContext.getContext().getValueStack().push(departmentService.getById(department.getId()));
+        ActionContext.getContext().getValueStack().push(departmentService.getById(model.getId()));
 
         List<Department> departmentList = departmentService.getAll();
         ActionContext.getContext().put("departmentList", departmentList);
-        if (department.getParent() != null)
-            parentId = department.getParent().getId();
+        if (model.getParent() != null)
+            parentId = model.getParent().getId();
 
         return "saveUI";
     }
@@ -102,8 +91,8 @@ public class DepartmentAction extends ActionSupport implements ModelDriven<Depar
      * @return
      */
     public String edit() {
-        department.setParent(departmentService.getById(parentId));
-        departmentService.updata(department);
+        model.setParent(departmentService.getById(parentId));
+        departmentService.updata(model);
         return "toList";
     }
 
