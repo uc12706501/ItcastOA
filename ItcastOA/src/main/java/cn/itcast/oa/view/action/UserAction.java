@@ -154,6 +154,42 @@ public class UserAction extends BaseAction<User> {
         return "toList";
     }
 
+    /**
+     * 登陆页面
+     *
+     * @return
+     */
+    public String loginUI() {
+        return "loginUI";
+    }
+
+    /**
+     * 登陆
+     *
+     * @return
+     */
+    public String login() {
+        User user = userService.getByLoginNameAndPassword(model.getLoginName(), model.getPassword());
+        if (user == null) {
+            addFieldError("", "用户名与密码不匹配");
+            return "loginUI";
+        } else {
+            ActionContext.getContext().getSession().put("user", user);
+        }
+
+        return "toIndex";
+    }
+
+    /**
+     * 退出
+     *
+     * @return
+     */
+    public String logout() {
+        ActionContext.getContext().getSession().remove("user");
+        return "logout";
+    }
+
     public Long getDepartmentId() {
         return departmentId;
     }

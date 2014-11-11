@@ -2,6 +2,7 @@
   <artifact type="exploded-war" name="ItcastOA:war exploded">
     <output-path>$PROJECT_DIR$/ItcastOA/target/struts2-archetype-starter</output-path>
     <root id="root">
+      <element id="javaee-facet-resources" facet="ItcastOA/web/Web" />
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="ItcastOA" />
@@ -55,7 +56,6 @@
           <element id="library" level="project" name="Maven: commons-codec:commons-codec:1.9" />
         </element>
       </element>
-      <element id="javaee-facet-resources" facet="ItcastOA/web/Web" />
     </root>
   </artifact>
 </component>
