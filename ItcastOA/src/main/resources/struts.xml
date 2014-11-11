@@ -14,6 +14,7 @@
             <result name="list">/WEB-INF/jsp/roleAction/list.jsp</result>
             <result name="saveUI">/WEB-INF/jsp/roleAction/saveUI.jsp</result>
             <result name="toList" type="redirectAction">role_list</result>
+            <result name="setPrivilegesUI">/WEB-INF/jsp/roleAction/setPrivilegesUI.jsp</result>
         </action>
 
         <!--部门管理配置-->

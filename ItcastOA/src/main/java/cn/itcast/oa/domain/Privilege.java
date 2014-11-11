@@ -10,8 +10,12 @@ public class Privilege {
     private Long id;
     private String name;
     private String url;
-    private Set<Role> roles=new HashSet<Role>();
+    private Set<Role> roles = new HashSet<Role>();
     private Privilege parent;
+
+    public Privilege() {
+
+    }
 
     public Privilege(String name, String url, Privilege parent) {
         this.name = name;
@@ -67,5 +71,5 @@ public class Privilege {
         this.children = children;
     }
 
-    private Set<Privilege> children=new HashSet<Privilege>();
+    private Set<Privilege> children = new HashSet<Privilege>();
 }
