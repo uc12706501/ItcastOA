@@ -17,6 +17,18 @@ public class User {
     private Department department;
     private Set<Role> roles;
 
+    public boolean findPrivilegeByName(String name) {
+        if (getLoginName().equals("admin"))
+            return true;
+        for (Role role : getRoles()) {
+            for (Privilege privilege : role.getPrivileges()) {
+                if (privilege.getName().equals(name))
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public Long getId() {
         return id;
     }
