@@ -10,7 +10,16 @@
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/file.css"/>
     <link type="text/css" rel="stylesheet"
           href="${pageContext.request.contextPath}/script/jquery_treeview/jquery.treeview.css"/>
-
+    <script>
+        $(function(){
+            $("[name=privilegeIds]").click(function(){
+                $(this).siblings("ul").find("input").attr("checked",this.checked);
+                if(this.checked==true){
+                    $(this).parents("li").children("input").attr("checked",true);
+                }
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -48,7 +57,8 @@
                     <tr align="LEFT" valign="MIDDLE" id="TableTitle">
                         <td width="300px" style="padding-left: 7px;">
                             <!-- 如果把全选元素的id指定为selectAll，并且有函数selectAll()，就会有错。因为有一种用法：可以直接用id引用元素 -->
-                            <input type="CHECKBOX" id="cbSelectAll" onClick="$('[type=checkbox]').attr('checked',this.checked)"/>
+                            <input type="CHECKBOX" id="cbSelectAll"
+                                   onClick="$('[type=checkbox]').attr('checked',this.checked)"/>
                             <label for="cbSelectAll">全选</label>
                         </td>
                     </tr>
@@ -59,8 +69,51 @@
                     <tr class="TableDetail1">
                         <!-- 显示权限树 -->
                         <td>
-                        <s:checkboxlist name="privilegeIds" list="#privilegeList" listKey="id"
-                                        listValue="name"></s:checkboxlist></td>
+                                <%--
+                                    <s:checkboxlist name="privilegeIds" list="#privilegeList" listKey="id"
+                                                    listValue="name"></s:checkboxlist>
+                                --%>
+                                <%--<s:iterator value="#privilegeList">
+                                    <input type="checkbox" value="${id}" name="privilegeIds"
+                                            <s:property value="id in privilegeIds?'checked':''"/>
+                                            >${name}
+                                    <br/>
+                                </s:iterator>--%>
+                            <ul id="tree">
+                                <s:iterator value="#application.topPrivilegeList">
+                                    <li>
+                                        <input type="checkbox" value="${id}" name="privilegeIds" id="cb_${id}"
+                                            <s:property value="id in privilegeIds?'checked':''"/>
+                                                >
+                                        <label for="cb_${id}"><span class="folder"/>${name}</label>
+                                        <ul>
+                                            <s:iterator value="children">
+                                                <li>
+                                                    <input type="checkbox" value="${id}" name="privilegeIds"
+                                                           id="cb_${id}"
+                                                        <s:property value="id in privilegeIds?'checked':''"/>
+                                                            >
+                                                    <label for="cb_${id}"><span class="folder"/>${name}</label>
+                                                    <ul>
+                                                        <s:iterator value="children">
+                                                            <li><input type="checkbox" value="${id}" name="privilegeIds"
+                                                                       id="cb_${id}"
+                                                                <s:property value="id in privilegeIds?'checked':''"/>
+                                                                    >
+                                                                <label for="cb_${id}"><span class="folder"/>${name}
+                                                                </label></li>
+                                                        </s:iterator>
+                                                    </ul>
+                                                </li>
+                                            </s:iterator>
+                                        </ul>
+                                    </li>
+                                </s:iterator>
+                            </ul>
+                            <script>
+                                $('#tree').treeview();
+                            </script>
+                        </td>
                     </tr>
                     </tbody>
                 </table>
