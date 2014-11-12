@@ -62,7 +62,7 @@ public class UserAction extends BaseAction<User> {
     public String add() throws Exception {
 
         //设置默认密码
-        model.setPassword("1234");
+        model.setPassword(DigestUtils.md5Hex("1234"));
 
         //设置复杂属性
         Department department = departmentService.getById(departmentId);

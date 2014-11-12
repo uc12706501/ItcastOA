@@ -29,6 +29,18 @@ public class User {
         return false;
     }
 
+    public boolean findPrivilegeByUrl(String url) {
+        if (getLoginName().equals("admin"))
+            return true;
+        for (Role role : getRoles()) {
+            for (Privilege privilege : role.getPrivileges()) {
+                if (url.equals(privilege.getUrl()))
+                    return true;
+            }
+        }
+        return false;
+    }
+
     public Long getId() {
         return id;
     }
