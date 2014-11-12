@@ -6,10 +6,18 @@ import cn.itcast.oa.service.PrivilegeService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by lkk on 2014/11/11.
  */
 @Service
 @Transactional
 public class PrivilegeServiceImpl extends DaoSupportImpl<Privilege> implements PrivilegeService {
+    public List<Privilege> findTopPrivileges() {
+
+        return sessionFactory.getCurrentSession()
+                .createQuery("from Privilege p where p.parent is null")
+                .list();
+    }
 }

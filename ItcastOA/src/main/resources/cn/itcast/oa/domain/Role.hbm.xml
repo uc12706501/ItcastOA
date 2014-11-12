@@ -19,7 +19,7 @@
         </set>
 
         <!--privileges属性，本类与Privilege类的多对多关联-->
-        <set name="privileges" table="itcast_role_privilege">
+        <set name="privileges" table="itcast_role_privilege" lazy="false">
             <key column="roleid"></key>
             <many-to-many class="Privilege" column="privilegeid"></many-to-many>
         </set>

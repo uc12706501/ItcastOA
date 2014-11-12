@@ -51,8 +51,10 @@
 	<listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-    
-    
+    <listener>
+        <listener-class>cn.itcast.oa.util.InitListener</listener-class>
+    </listener>
+
     <!-- Servlets -->
     <servlet>
         <servlet-name>dwr</servlet-name>
