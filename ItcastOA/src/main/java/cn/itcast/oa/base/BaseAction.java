@@ -1,9 +1,6 @@
 package cn.itcast.oa.base;
 
-import cn.itcast.oa.service.DepartmentService;
-import cn.itcast.oa.service.PrivilegeService;
-import cn.itcast.oa.service.RoleService;
-import cn.itcast.oa.service.UserService;
+import cn.itcast.oa.service.*;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -42,5 +39,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
     protected UserService userService;
     @Resource
     protected PrivilegeService privilegeService;
+    @Resource
+    protected ForumService forumService;
 
 }
