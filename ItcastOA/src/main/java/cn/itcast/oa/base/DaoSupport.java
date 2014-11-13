@@ -10,7 +10,7 @@ public interface DaoSupport<T> {
      * 保存实体
      * @param entity
      */
-    java.io.Serializable save(T entity);
+    void save(T entity);
 
     /**
      * 删除实体
