@@ -5,6 +5,20 @@
 
 <struts>
     <package name="default" namespace="/" extends="struts-default">
+        <interceptors>
+            <interceptor name="checkPrivilege" class="cn.itcast.oa.util.CheckPrivilegeInterceptor"/>
+            <interceptor-stack name="defaultStack">
+                <interceptor-ref name="checkPrivilege"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <global-results>
+            <result name="loginUI">/WEB-INF/jsp/userAction/loginUI.jsp</result>
+            <result name="noPrivilegeError">/noPrivilegeError.jsp</result>
+        </global-results>
+
+
         <action name="index" class="testAction">
             <result>/index.jsp</result>
         </action>

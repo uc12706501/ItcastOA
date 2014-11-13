@@ -32,9 +32,21 @@ public class User {
     public boolean findPrivilegeByUrl(String url) {
         if (getLoginName().equals("admin"))
             return true;
+        String privUrl=url;
+        if (!url.startsWith("/"))
+            privUrl = "/" + privUrl;
+        //去掉查询参数
+        int pos = privUrl.indexOf("?");
+        if (pos > -1) {
+            privUrl = privUrl.substring(0, pos);
+        }
+        //删除UI字符
+        if (privUrl.endsWith("UI")) {
+            privUrl = privUrl.substring(0, privUrl.length() - 2);
+        }
         for (Role role : getRoles()) {
             for (Privilege privilege : role.getPrivileges()) {
-                if (url.equals(privilege.getUrl()))
+                if (privUrl.equals(privilege.getUrl()))
                     return true;
             }
         }
