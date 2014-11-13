@@ -29,8 +29,8 @@ public class DaoSupportImpl<T> implements DaoSupport<T> {
         return sessionFactory.getCurrentSession();
     }
 
-    public java.io.Serializable save(T entity) {
-        return sessionFactory.getCurrentSession().save(entity);
+    public void save(T entity) {
+        sessionFactory.getCurrentSession().save(entity);
     }
 
     public void delete(Long id) {
