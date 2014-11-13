@@ -20,4 +20,10 @@ public class PrivilegeServiceImpl extends DaoSupportImpl<Privilege> implements P
                 .createQuery("from Privilege p where p.parent is null")
                 .list();
     }
+
+    public List<String> findAllPrivileges() {
+        return sessionFactory.getCurrentSession()
+                .createQuery(" select distinct p.url  from Privilege p where p.url is not null")
+                .list();
+    }
 }

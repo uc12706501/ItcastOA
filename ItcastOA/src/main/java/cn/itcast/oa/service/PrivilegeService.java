@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface PrivilegeService extends DaoSupport<Privilege>{
     List<Privilege> findTopPrivileges();
+
+    List<String> findAllPrivileges();
 }

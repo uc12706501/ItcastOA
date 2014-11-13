@@ -1,5 +1,8 @@
 package cn.itcast.oa.domain;
 
+import com.opensymphony.xwork2.ActionContext;
+
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -30,9 +33,10 @@ public class User {
     }
 
     public boolean findPrivilegeByUrl(String url) {
+        //如果是超级管理员，直接返回true
         if (getLoginName().equals("admin"))
             return true;
-        String privUrl=url;
+        String privUrl = url;
         if (!url.startsWith("/"))
             privUrl = "/" + privUrl;
         //去掉查询参数
@@ -44,6 +48,10 @@ public class User {
         if (privUrl.endsWith("UI")) {
             privUrl = privUrl.substring(0, privUrl.length() - 2);
         }
+        //检查是否需要控制权限
+        List<String> allPrivileges = (List<String>) ActionContext.getContext().getApplication().get("allPrivilegeList");
+        if (!allPrivileges.contains(privUrl))
+            return true;
         for (Role role : getRoles()) {
             for (Privilege privilege : role.getPrivileges()) {
                 if (privUrl.equals(privilege.getUrl()))
