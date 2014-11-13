@@ -37,8 +37,10 @@ public class ForumServiceImpl extends DaoSupportImpl<Forum> implements ForumServ
                 .setFirstResult(0)
                 .uniqueResult();
 
+
         if(other==null)
             return;
+
 
         int temp = forum.getPosition();
         forum.setPosition(other.getPosition());

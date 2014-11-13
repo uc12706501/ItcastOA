@@ -187,7 +187,11 @@
                             <value>false</value>
                         </systemProperty>
                     </systemProperties>
+<<<<<<< HEAD
                     <scanIntervalSeconds>0</scanIntervalSeconds>
+=======
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+>>>>>>> oschina/master
                     <webAppSourceDirectory>${basedir}/src/main/webapp/</webAppSourceDirectory>
                     <webAppConfig>
                         <contextPath>/oa</contextPath>
