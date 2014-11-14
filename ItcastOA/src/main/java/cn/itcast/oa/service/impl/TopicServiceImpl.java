@@ -28,13 +28,14 @@ public class TopicServiceImpl extends DaoSupportImpl<Topic> implements TopicServ
         entity.setLastReply(null);
         entity.setLastUpdateTime(entity.getPostTime());
 
+        sessionFactory.getCurrentSession().save(entity);
+
         //维护其他对象的特殊属性
         Forum forum = entity.getForum();
         forum.setTopicCount(forum.getTopicCount() + 1);
         forum.setArticleCount(forum.getArticleCount() + 1);
         forum.setLastTopic(entity);
 
-        sessionFactory.getCurrentSession().save(entity);
-        sessionFactory.getCurrentSession().save(forum);
+        sessionFactory.getCurrentSession().update(forum);
     }
 }

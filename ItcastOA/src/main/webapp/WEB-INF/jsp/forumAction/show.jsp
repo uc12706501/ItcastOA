@@ -85,7 +85,7 @@
                         <td class="ForumTopicPageDataLine">
                             <ul class="ForumPageTopicUl">
                                 <li class="Author">${lastReply.author.name}</li>
-                                <li class="CreateTime">${lastReply.author.postTime}</li>
+                                <li class="CreateTime">${lastReply.postTime}</li>
                             </ul>
                         </td>
                         <td></td>
