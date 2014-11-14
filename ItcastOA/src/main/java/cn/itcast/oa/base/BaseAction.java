@@ -41,5 +41,9 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
     protected PrivilegeService privilegeService;
     @Resource
     protected ForumService forumService;
+    @Resource
+    protected TopicService topicService;
+    @Resource
+    protected ReplyService replyService;
 
 }
