@@ -15,7 +15,7 @@ import java.util.List;
 public class TopicServiceImpl extends DaoSupportImpl<Topic> implements TopicService {
     public List<Topic> findByForum(Forum forum) {
         return sessionFactory.getCurrentSession()
-                .createQuery("FROM Topic t where t.forum=? order by t.type desc ,t.lastUpdateTime desc")
+                .createQuery("FROM Topic t where t.forum=? order by (case t.type when 2 then 2 else 0 end) desc ,t.lastUpdateTime desc")
                 .setParameter(0, forum)
                 .list();
     }
