@@ -35,7 +35,7 @@
             <s:a action="forum_list">论坛</s:a>
             <font class="MenuPoint"> &gt; </font>
             ${forum.name}
-			<span style="margin-left:30px;"><s:a action="topic_addUI?forumId=%{forum.id}">
+			<span style="margin-left:30px;"><s:a action="topic_addUI?forumId=%{#forum.id}">
                 <img align="absmiddle"
                      src="${pageContext.request.contextPath}/style/blue/images/button/publishNewTopic.png"/></s:a>
 			</span>
