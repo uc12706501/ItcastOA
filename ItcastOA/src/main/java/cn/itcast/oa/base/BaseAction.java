@@ -1,6 +1,8 @@
 package cn.itcast.oa.base;
 
+import cn.itcast.oa.domain.User;
 import cn.itcast.oa.service.*;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -46,4 +48,7 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
     @Resource
     protected ReplyService replyService;
 
+    protected User getCurrentUser(){
+        return (User) ActionContext.getContext().getSession().get("user");
+    }
 }

@@ -1,5 +1,10 @@
 package cn.itcast.oa.view.action;
 
+import cn.itcast.oa.base.BaseAction;
+import cn.itcast.oa.domain.Forum;
+import cn.itcast.oa.domain.Topic;
+import com.opensymphony.xwork2.ActionContext;
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -8,7 +13,9 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 @Scope("prototype")
-public class TopicAction {
+public class TopicAction extends BaseAction<Topic> {
+
+    private Long forumId;
 
     /**
      * 查看主题
@@ -25,6 +32,9 @@ public class TopicAction {
      * @return
      */
     public String addUI() {
+        Forum forum = forumService.getById(forumId);
+        ActionContext.getContext().put("forum", forum);
+
         return "addUI";
     }
 
@@ -34,6 +44,23 @@ public class TopicAction {
      * @return
      */
     public String add() {
+        //封装好的参数
+        //model.setContent();
+        //model.setTitle();
+        model.setForum(forumService.getById(forumId));
+
+        model.setAuthor(getCurrentUser());
+        model.setIpAddr(ServletActionContext.getRequest().getRemoteAddr());
+
+        topicService.save(model);
         return "toShow";
+    }
+
+    public Long getForumId() {
+        return forumId;
+    }
+
+    public void setForumId(Long forumId) {
+        this.forumId = forumId;
     }
 }
