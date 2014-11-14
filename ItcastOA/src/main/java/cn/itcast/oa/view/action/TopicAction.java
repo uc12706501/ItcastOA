@@ -8,6 +8,8 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.Date;
+
 /**
  * Created by lkk on 2014/11/14.
  */
@@ -49,6 +51,7 @@ public class TopicAction extends BaseAction<Topic> {
         //model.setTitle();
         model.setForum(forumService.getById(forumId));
 
+        model.setPostTime(new Date());
         model.setAuthor(getCurrentUser());
         model.setIpAddr(ServletActionContext.getRequest().getRemoteAddr());
 
