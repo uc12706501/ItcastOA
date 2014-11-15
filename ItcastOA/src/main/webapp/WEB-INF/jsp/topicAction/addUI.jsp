@@ -15,7 +15,7 @@
 
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/style/blue/forum.css"/>
 
-    <script language="javascript" src="${pageContext.request.contextPath}/script/fckeditor/fckeditor.js"
+    <script language="javascript" src="${pageContext.request.contextPath}/fckeditor/fckeditor.js"
             charset="utf-8"></script>
     <script type="text/javascript">
         $(function () {
@@ -23,7 +23,7 @@
             fck.Width = "99%";
             fck.Height = "100%";
             fck.ToolbarSet = "bbs";
-            fck.BasePath = "${pageContext.request.contextPath}/script/fckeditor/";
+            fck.BasePath = "${pageContext.request.contextPath}/fckeditor/";
             //fck.Config['SkinPath'] = "${pageContext.request.contextPath}/scriipt/fckeditoreditor/skins/office2003/";
             //fck.Config['SkinPath'] = "http://bbs.itcast.cn:80/widgets/fckeditor/editor/skins/office2003/";
             fck.ReplaceTextarea();
