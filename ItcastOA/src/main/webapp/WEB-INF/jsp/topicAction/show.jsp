@@ -108,8 +108,7 @@
                         </li>
                         <!-- 文章表情与标题 -->
                         <li class="TopicSubject">
-                            <img width="19" height="19"
-                                 src="${pageContext.request.contextPath}/style/images/face/face1.gif"/>
+
                             新手发帖
                         </li>
                     </ul>
@@ -164,8 +163,7 @@
                             </li>
                             <!-- 文章表情与标题 -->
                             <li class="TopicSubject">
-                                <img width="19" height="19"
-                                     src="${pageContext.request.contextPath}/style/images/face/${reply.faceIcon}"/>
+                                
                                     ${title}
                             </li>
                         </ul>
