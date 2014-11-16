@@ -2,13 +2,14 @@ package cn.itcast.oa.view.action;
 
 import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Forum;
-import cn.itcast.oa.domain.Reply;
 import cn.itcast.oa.domain.Topic;
+import cn.itcast.oa.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class TopicAction extends BaseAction<Topic> {
 
     private Long forumId;
 
+
     /**
      * 查看主题
      *
@@ -32,8 +34,15 @@ public class TopicAction extends BaseAction<Topic> {
         ActionContext.getContext().put("topic", topic);
 
         //准备数据：replyList
-        List<Reply> replyList = replyService.findByTopic(topic);
-        ActionContext.getContext().put("replyList", replyList);
+//        PageBean replyList = replyService.getPageBeamByTopic(pageNum, pageSize, topic);
+//        ActionContext.getContext().getValueStack().push(replyList);
+
+        String hql = "from Reply r where r.topic=? order by r.postTime";
+        List<Object> parameters = new ArrayList<Object>();
+        parameters.add(topic);
+
+        PageBean pageBean = replyService.getPageBean(pageNum, pageSize, hql, parameters);
+        ActionContext.getContext().getValueStack().push(pageBean);
 
         return "show";
     }
@@ -76,4 +85,6 @@ public class TopicAction extends BaseAction<Topic> {
     public void setForumId(Long forumId) {
         this.forumId = forumId;
     }
+
+
 }

@@ -48,7 +48,27 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
     @Resource
     protected ReplyService replyService;
 
-    protected User getCurrentUser(){
+    protected User getCurrentUser() {
         return (User) ActionContext.getContext().getSession().get("user");
+    }
+
+    //=================分页相关的信息===============
+    protected int pageSize = 10;
+    protected int pageNum = 1;
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }
