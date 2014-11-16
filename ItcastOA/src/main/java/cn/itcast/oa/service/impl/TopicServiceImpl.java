@@ -2,8 +2,10 @@ package cn.itcast.oa.service.impl;
 
 import cn.itcast.oa.base.DaoSupportImpl;
 import cn.itcast.oa.domain.Forum;
+import cn.itcast.oa.domain.Reply;
 import cn.itcast.oa.domain.Topic;
 import cn.itcast.oa.service.TopicService;
+import cn.itcast.oa.util.PageBean;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +21,22 @@ public class TopicServiceImpl extends DaoSupportImpl<Topic> implements TopicServ
                 .setParameter(0, forum)
                 .list();
     }
+
+    public PageBean getPageBeanByForum(int pageNum, int pageSize, Forum forum) {
+        List<Reply> recordList = getSession()
+                .createQuery("FROM Topic t where t.forum=? order by (case t.type when 2 then 2 else 0 end) desc ,t.lastUpdateTime desc")
+                .setParameter(0, forum)
+                .setMaxResults(pageSize)
+                .setFirstResult((pageNum - 1) * pageSize)
+                .list();
+
+        Long recordCount = (Long) getSession()
+                .createQuery("select count(*) FROM Topic t where t.forum=? ")
+                .setParameter(0, forum)
+                .uniqueResult();
+        return new PageBean(pageSize, pageNum, recordList, recordCount.intValue());
+    }
+
 
     @Override
     public void save(Topic entity) {

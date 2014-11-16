@@ -10,4 +10,5 @@ public interface ForumService extends DaoSupport<Forum> {
     void moveUp(Long id);
 
     void moveDown(Long id);
+
 }

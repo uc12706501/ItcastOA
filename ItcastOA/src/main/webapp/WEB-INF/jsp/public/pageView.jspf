@@ -1,0 +1,42 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<div id=PageSelectorBar>
+    <div id=PageSelectorMemo>
+        页次：${pageNum}/${pageCount}页 &nbsp;
+        每页显示：${pageSize}条 &nbsp;
+        总记录数：${recordCount}条
+    </div>
+    <div id=PageSelectorSelectorArea>
+        <!--
+            <IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage2.png"/>
+            -->
+        <a href="javascript:gotoPageNum(1)" title="首页" style="cursor: hand;">
+            <img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage.png"/></a>
+
+
+        <s:iterator begin="beginPageIndex" end="endPageIndex" var="num">
+            <s:if test="#num!=pageNum">
+                <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(${num});">${num}</span>
+            </s:if>
+            <s:else>
+                <span class="PageSelectorNum PageSelectorSelected">${num}</span>
+            </s:else>
+        </s:iterator>
+
+        <!--
+            <IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage2.png"/>
+            -->
+        <a href="#" title="尾页" style="cursor: hand;" href="javascript:gotoPageNum(${pageCount})">
+            <img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage.png"/></a>
+
+
+        <select onchange="gotoPageNum(this.value)" id="_pn">
+            <s:iterator begin="1" end="pageCount" var="num">
+                <option value="${num}">${num}</option>
+            </s:iterator>
+        </select>
+    </div>
+    <script>
+        $("#_pn").val(${pageNum});
+    </script>
+</div>

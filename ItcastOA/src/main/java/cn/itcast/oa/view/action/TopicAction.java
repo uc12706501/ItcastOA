@@ -19,8 +19,7 @@ import java.util.Date;
 public class TopicAction extends BaseAction<Topic> {
 
     private Long forumId;
-    private int pageSize=10;
-    private int pageNum=1;
+
 
     /**
      * 查看主题
@@ -78,19 +77,5 @@ public class TopicAction extends BaseAction<Topic> {
         this.forumId = forumId;
     }
 
-    public int getPageSize() {
-        return pageSize;
-    }
 
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public int getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(int pageNum) {
-        this.pageNum = pageNum;
-    }
 }

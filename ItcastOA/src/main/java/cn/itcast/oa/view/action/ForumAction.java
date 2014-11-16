@@ -2,7 +2,7 @@ package cn.itcast.oa.view.action;
 
 import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Forum;
-import cn.itcast.oa.domain.Topic;
+import cn.itcast.oa.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -37,8 +37,8 @@ public class ForumAction extends BaseAction<Forum> {
         Forum forum = forumService.getById(model.getId());
         ActionContext.getContext().put("forum", forum);
 
-        List<Topic> topicList = topicService.findByForum(forum);
-        ActionContext.getContext().put("topicList", topicList);
+        PageBean pageBean = topicService.getPageBeanByForum(pageNum, pageSize, forum);
+        ActionContext.getContext().getValueStack().push(pageBean);
         return "show";
     }
 
