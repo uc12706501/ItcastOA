@@ -2,15 +2,14 @@ package cn.itcast.oa.view.action;
 
 import cn.itcast.oa.base.BaseAction;
 import cn.itcast.oa.domain.Forum;
-import cn.itcast.oa.domain.Reply;
 import cn.itcast.oa.domain.Topic;
+import cn.itcast.oa.util.PageBean;
 import com.opensymphony.xwork2.ActionContext;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by lkk on 2014/11/14.
@@ -20,6 +19,8 @@ import java.util.List;
 public class TopicAction extends BaseAction<Topic> {
 
     private Long forumId;
+    private int pageSize=10;
+    private int pageNum=1;
 
     /**
      * 查看主题
@@ -32,8 +33,8 @@ public class TopicAction extends BaseAction<Topic> {
         ActionContext.getContext().put("topic", topic);
 
         //准备数据：replyList
-        List<Reply> replyList = replyService.findByTopic(topic);
-        ActionContext.getContext().put("replyList", replyList);
+        PageBean replyList = replyService.getPageBeamByTopic(pageNum, pageSize, topic);
+        ActionContext.getContext().getValueStack().push(replyList);
 
         return "show";
     }
@@ -75,5 +76,21 @@ public class TopicAction extends BaseAction<Topic> {
 
     public void setForumId(Long forumId) {
         this.forumId = forumId;
+    }
+
+    public int getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(int pageSize) {
+        this.pageSize = pageSize;
+    }
+
+    public int getPageNum() {
+        return pageNum;
+    }
+
+    public void setPageNum(int pageNum) {
+        this.pageNum = pageNum;
     }
 }

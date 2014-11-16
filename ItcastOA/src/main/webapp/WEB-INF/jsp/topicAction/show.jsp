@@ -65,7 +65,7 @@
             <td class="ForumPageTableTitle"><b>本帖主题：${topic.title}</b></td>
             <td class="ForumPageTableTitle" align="right" style="padding-right:12px;">
                 <s:a cssClass="detail" action="reply_addUI?topicId=%{#topic.id}"><img border="0"
-                                                                                     src="${pageContext.request.contextPath}/style/images/reply.gif"/>回复</s:a>
+                                                                                      src="${pageContext.request.contextPath}/style/images/reply.gif"/>回复</s:a>
                 <a href="moveUI.html"><img border="0"
                                            src="${pageContext.request.contextPath}/style/images/edit.gif"/>移动到其他版块</a>
                 <a href="#" onClick="return confirm('要把本主题设为精华吗？')"><img border="0"
@@ -83,64 +83,66 @@
     </table>
 
     <!-- ~~~~~~~~~~~~~~~ 显示主帖 ~~~~~~~~~~~~~~~ -->
-    <div class="ListArea">
-        <table border="0" cellpadding="0" cellspacing="1" width="100%">
-            <tr>
-                <td rowspan="3" width="130" class="PhotoArea" align="center" valign="top">
-                    <!--作者头像-->
-                    <div class="AuthorPhoto">
-                        <img border="0" width="110" height="110"
-                             src="${pageContext.request.contextPath}/style/images/defaultAvatar.gif"
-                             onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/style/images/defaultAvatar.gif';"/>
-                    </div>
-                    <!--作者名称-->
-                    <div class="AuthorName">${topic.author.name}</div>
-                </td>
-                <td align="center">
-                    <ul class="TopicFunc">
-                        <!--操作列表-->
-                        <li class="TopicFuncLi">
-                            <a class="detail" href="${pageContext.request.contextPath}/BBS_Topic/saveUI.html"><img
-                                    border="0"
-                                    src="${pageContext.request.contextPath}/style/images/edit.gif"/>编辑</a>
-                            <a class="detail" href="#" onClick="return confirm('确定要删除本帖吗？')"><img border="0"
-                                                                                                  src="${pageContext.request.contextPath}/style/images/delete.gif"/>删除</a>
-                        </li>
-                        <!-- 文章表情与标题 -->
-                        <li class="TopicSubject">
-                            <img width="19" height="19"
-                                 src="${pageContext.request.contextPath}/style/images/face/face1.gif"/>
-                            新手发帖
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr><!-- 文章内容 -->
-                <td valign="top" align="center">
-                    <div class="Content">${topic.content}</div>
-                </td>
-            </tr>
-            <tr><!--显示楼层等信息-->
-                <td class="Footer" height="28" align="center" valign="bottom">
-                    <ul style="margin: 0px; width: 98%;">
-                        <li style="float: left; line-height:18px;"><font color=#C30000>[楼主]</font>
-                            2007-08-17 15:18
-                        </li>
-                        <li style="float: right;"><a href="javascript:scroll(0,0)">
-                            <img border="0" src="${pageContext.request.contextPath}/style/images/top.gif"/></a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-    </div>
+    <s:if test="pageNum==1">
+        <div class="ListArea">
+            <table border="0" cellpadding="0" cellspacing="1" width="100%">
+                <tr>
+                    <td rowspan="3" width="130" class="PhotoArea" align="center" valign="top">
+                        <!--作者头像-->
+                        <div class="AuthorPhoto">
+                            <img border="0" width="110" height="110"
+                                 src="${pageContext.request.contextPath}/style/images/defaultAvatar.gif"
+                                 onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/style/images/defaultAvatar.gif';"/>
+                        </div>
+                        <!--作者名称-->
+                        <div class="AuthorName">${topic.author.name}</div>
+                    </td>
+                    <td align="center">
+                        <ul class="TopicFunc">
+                            <!--操作列表-->
+                            <li class="TopicFuncLi">
+                                <a class="detail" href="${pageContext.request.contextPath}/BBS_Topic/saveUI.html"><img
+                                        border="0"
+                                        src="${pageContext.request.contextPath}/style/images/edit.gif"/>编辑</a>
+                                <a class="detail" href="#" onClick="return confirm('确定要删除本帖吗？')"><img border="0"
+                                                                                                      src="${pageContext.request.contextPath}/style/images/delete.gif"/>删除</a>
+                            </li>
+                            <!-- 文章表情与标题 -->
+                            <li class="TopicSubject">
+                                <img width="19" height="19"
+                                     src="${pageContext.request.contextPath}/style/images/face/face1.gif"/>
+                                新手发帖
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr><!-- 文章内容 -->
+                    <td valign="top" align="center">
+                        <div class="Content">${topic.content}</div>
+                    </td>
+                </tr>
+                <tr><!--显示楼层等信息-->
+                    <td class="Footer" height="28" align="center" valign="bottom">
+                        <ul style="margin: 0px; width: 98%;">
+                            <li style="float: left; line-height:18px;"><font color=#C30000>[楼主]</font>
+                                2007-08-17 15:18
+                            </li>
+                            <li style="float: right;"><a href="javascript:scroll(0,0)">
+                                <img border="0" src="${pageContext.request.contextPath}/style/images/top.gif"/></a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </s:if>
     <!-- ~~~~~~~~~~~~~~~ 显示主帖结束 ~~~~~~~~~~~~~~~ -->
 
 
     <!-- ~~~~~~~~~~~~~~~ 显示回复列表 ~~~~~~~~~~~~~~~ -->
     <div class="ListArea template">
         <table border="0" cellpadding="0" cellspacing="1" width="100%">
-            <s:iterator value="replyList" status="st">
+            <s:iterator value="recordList" status="st">
                 <tr>
                     <td rowspan="3" width="130" class="PhotoArea" align="center" valign="top">
                         <!--作者头像-->
@@ -163,11 +165,6 @@
                                                                                                       src="${pageContext.request.contextPath}/style/images/delete.gif"/>删除</a>
                             </li>
                             <!-- 文章表情与标题 -->
-                            <li class="TopicSubject">
-                                <img width="19" height="19"
-                                     src="${pageContext.request.contextPath}/style/images/face/${reply.faceIcon}"/>
-                                    ${title}
-                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -179,7 +176,8 @@
                 <tr><!--显示楼层等信息-->
                     <td class="Footer" height="28" align="center" valign="bottom">
                         <ul style="margin: 0px; width: 98%;">
-                            <li style="float: left; line-height:18px;"><font color=#C30000>[${st.index+1}楼]</font>
+                            <li style="float: left; line-height:18px;"><font
+                                    color=#C30000>[${(pageNum-1)*pageSize+st.index+1}楼]</font>
                                 2007-08-17 15:18
                             </li>
                             <li style="float: right;"><a href="javascript:scroll(0,0)">
@@ -197,38 +195,45 @@
 <!--分页信息-->
 <div id=PageSelectorBar>
     <div id=PageSelectorMemo>
-        页次：7/13页 &nbsp;
-        每页显示：30条 &nbsp;
-        总记录数：385条
+        页次：${pageNum}/${pageCount}页 &nbsp;
+        每页显示：${pageSize}条 &nbsp;
+        总记录数：${recordCount}条
     </div>
     <div id=PageSelectorSelectorArea>
         <!--
             <IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage2.png"/>
             -->
-        <a href="javascript:void(0)" title="首页" style="cursor: hand;">
+        <a href="javascript:gotoPageNum(1)" title="首页" style="cursor: hand;">
             <img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/firstPage.png"/></a>
 
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">3</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">4</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">5</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">6</span>
-        <span class="PageSelectorNum PageSelectorSelected">7</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">8</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">9</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">10</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">11</span>
-        <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(2);">12</span>
+
+        <s:iterator begin="beginPageIndex" end="endPageIndex" var="num">
+            <s:if test="#num!=pageNum">
+                <span class="PageSelectorNum" style="cursor: hand;" onClick="gotoPageNum(${num});">${num}</span>
+            </s:if>
+            <s:else>
+                <span class="PageSelectorNum PageSelectorSelected">${num}</span>
+            </s:else>
+        </s:iterator>
 
         <!--
             <IMG SRC="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage2.png"/>
             -->
-        <a href="#" title="尾页" style="cursor: hand;">
+        <a href="#" title="尾页" style="cursor: hand;" href="javascript:gotoPageNum(${pageCount})">
             <img src="${pageContext.request.contextPath}/style/blue/images/pageSelector/lastPage.png"/></a>
 
-        转到：
-        <input onFocus="this.select();" maxlength="2" class="inputStyle" type="text" value="1" name="currPage"
-               tabindex="0"/>
-        <input type="submit" name="goBtn" value="Go" class="MiddleButtonStyle"/>
+
+        <select onchange="gotoPageNum(this.value)" id="_pn">
+            <s:iterator begin="1" end="pageCount" var="num" >
+                <option value="${num}">${num}</option>
+            </s:iterator>
+        </select>
+        <script>
+            function gotoPageNum(pageNum) {
+                window.location.href = "topic_show.action?id=${topic.id}&pageNum=" + pageNum;
+            };
+            $("#_pn").val(${pageNum});
+        </script>
     </div>
 </div>
 
