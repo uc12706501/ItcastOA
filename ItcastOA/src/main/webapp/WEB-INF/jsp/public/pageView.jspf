@@ -38,5 +38,11 @@
     </div>
     <script>
         $("#_pn").val(${pageNum});
+
+        function gotoPageNum(pageNum) {
+            $(document.forms[0]).append("<input type='hidden' name='pageNum' value='" + pageNum + "'/>")
+            document.forms[0].submit();
+        }
+        ;
     </script>
 </div>

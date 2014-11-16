@@ -196,12 +196,7 @@
 
     <!--分页信息-->
     <%@ include file="/WEB-INF/jsp/public/pageView.jspf" %>
-    <script>
-        function gotoPageNum(pageNum) {
-            window.location.href = "topic_show.action?id=${topic.id}&pageNum=" + pageNum;
-        }
-        ;
-    </script>
+    <s:form action="topic_show.action?id=%{#topic.id}"></s:form>
 
     <div class="ForumPageTableBorder" style="margin-top: 25px;">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">

@@ -140,12 +140,8 @@
 
 <!--分页信息-->
 <%@ include file="/WEB-INF/jsp/public/pageView.jspf" %>
-<script>
-    function gotoPageNum(pageNum) {
-        window.location.href = "forum_show.action?id=${forum.id}&pageNum=" + pageNum;
-    }
-    ;
-</script>
+<s:form action="forum_show?id=%{#forum.id}"></s:form>
+
 
 <div class="Description">
     说明：<br/>
