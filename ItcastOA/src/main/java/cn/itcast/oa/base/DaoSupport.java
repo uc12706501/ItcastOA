@@ -1,5 +1,7 @@
 package cn.itcast.oa.base;
 
+import cn.itcast.oa.util.PageBean;
+
 import java.util.List;
 
 /**
@@ -8,24 +10,28 @@ import java.util.List;
 public interface DaoSupport<T> {
     /**
      * 保存实体
+     *
      * @param entity
      */
     void save(T entity);
 
     /**
      * 删除实体
+     *
      * @param entity
      */
     void delete(Long entity);
 
     /**
      * 更新实体
+     *
      * @param eneity
      */
     void update(T eneity);
 
     /**
      * 根据id查找实体
+     *
      * @param id
      * @return
      */
@@ -33,14 +39,18 @@ public interface DaoSupport<T> {
 
     /**
      * 获得所有实体
+     *
      * @return
      */
     List<T> getAll();
 
     /**
      * 根据ids查找实体
+     *
      * @param ids
      * @return
      */
     List<T> getByIds(Long[] ids);
+
+    PageBean getPageBean(int pageNum, int pageSize, String hql, List<Object> parameters);
 }

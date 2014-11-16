@@ -1,5 +1,7 @@
 package cn.itcast.oa.base;
 
+import cn.itcast.oa.util.PageBean;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,5 +57,30 @@ public class DaoSupportImpl<T> implements DaoSupport<T> {
         return getSession().createQuery("from " + clazz.getSimpleName() + " where id in (:ids)")
                 .setParameterList("ids", ids)
                 .list();
+    }
+
+    public PageBean getPageBean(int pageNum, int pageSize, String hql, List<Object> parameters) {
+
+        //查询数据
+        Query listQuery = getSession().createQuery(hql);
+        if (parameters != null && parameters.size() != 0) {
+            for (int i = 0; i < parameters.size(); i++) {
+                listQuery.setParameter(i, parameters.get(i));
+            }
+        }
+
+        listQuery.setMaxResults(pageSize);
+        listQuery.setFirstResult((pageNum - 1) * pageSize);
+        List recordList = listQuery.list();
+
+        //查询总记录数
+        Query countQuery = getSession().createQuery("select count(*) "+hql);
+        if (parameters != null && parameters.size() != 0) {
+            for (int i = 0; i < parameters.size(); i++) {
+                countQuery.setParameter(i, parameters.get(i));
+            }
+        }
+        Long recordCount = (Long) countQuery.uniqueResult();
+        return new PageBean(pageSize, pageNum, recordList, recordCount.intValue());
     }
 }

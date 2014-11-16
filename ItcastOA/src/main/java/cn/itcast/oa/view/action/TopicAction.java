@@ -9,7 +9,9 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by lkk on 2014/11/14.
@@ -32,8 +34,15 @@ public class TopicAction extends BaseAction<Topic> {
         ActionContext.getContext().put("topic", topic);
 
         //准备数据：replyList
-        PageBean replyList = replyService.getPageBeamByTopic(pageNum, pageSize, topic);
-        ActionContext.getContext().getValueStack().push(replyList);
+//        PageBean replyList = replyService.getPageBeamByTopic(pageNum, pageSize, topic);
+//        ActionContext.getContext().getValueStack().push(replyList);
+
+        String hql = "from Reply r where r.topic=? order by r.postTime";
+        List<Object> parameters = new ArrayList<Object>();
+        parameters.add(topic);
+
+        PageBean pageBean = replyService.getPageBean(pageNum, pageSize, hql, parameters);
+        ActionContext.getContext().getValueStack().push(pageBean);
 
         return "show";
     }

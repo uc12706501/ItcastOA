@@ -139,11 +139,12 @@
 </div>
 
 <!--分页信息-->
-<%@ include file="/WEB-INF/jsp/public/pageView.jspf"%>
+<%@ include file="/WEB-INF/jsp/public/pageView.jspf" %>
 <script>
     function gotoPageNum(pageNum) {
         window.location.href = "forum_show.action?id=${forum.id}&pageNum=" + pageNum;
-    };
+    }
+    ;
 </script>
 
 <div class="Description">

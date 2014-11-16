@@ -7,6 +7,7 @@ import com.opensymphony.xwork2.ActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,7 +38,13 @@ public class ForumAction extends BaseAction<Forum> {
         Forum forum = forumService.getById(model.getId());
         ActionContext.getContext().put("forum", forum);
 
-        PageBean pageBean = topicService.getPageBeanByForum(pageNum, pageSize, forum);
+//        PageBean pageBean = topicService.getPageBeanByForum(pageNum, pageSize, forum);
+//        ActionContext.getContext().getValueStack().push(pageBean);
+        String hql = "FROM Topic t where t.forum=? order by (case t.type when 2 then 2 else 0 end) desc ,t.lastUpdateTime desc";
+        List<Object> parameters = new ArrayList<Object>();
+        parameters.add(forum);
+
+        PageBean pageBean = topicService.getPageBean(pageNum, pageSize, hql, parameters);
         ActionContext.getContext().getValueStack().push(pageBean);
         return "show";
     }
